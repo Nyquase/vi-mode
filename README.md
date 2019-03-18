@@ -23,7 +23,9 @@ You can override the default by changing the corresponding variables:
 `$VISUAL_MODE_INDICATOR`  
 
 > Example:  
-> NORMAL_MODE_INDICATOR="%{$FX[italic]$FG[201]%}NORMAL%{$FX[reset]%}"  
+> ```zsh
+> NORMAL_MODE_INDICATOR="%{$FX[italic]$FG[201]%}NORMAL%{$FX[reset]%}"
+> ```  
 > Will display NORMAL in italic purple when in vicmd (normal) mode
 
 Vim edition
