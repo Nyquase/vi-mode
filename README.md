@@ -17,12 +17,13 @@ Mode indicators
 
 Mode are indicated by the right prompt when not defined by theme.
 You can override the default by changing the corresponding variables:
-`INSERT_MODE_INDICATOR`
-`NORMAL_MODE_INDICATOR`
-`VISUAL_MODE_INDICATOR`
+
+`INSERT_MODE_INDICATOR`  
+`NORMAL_MODE_INDICATOR`  
+`VISUAL_MODE_INDICATOR`  
 
 > Example:
-> NORMAL_MODE_INDICATOR="%{$FX[italic]$FG[201]%}NORMAL%{$FX[reset]%}"
+> NORMAL_MODE_INDICATOR="%{$FX[italic]$FG[201]%}NORMAL%{$FX[reset]%}"  
 > Will display NORMAL in italic purple when in vicmd (normal) mode
 
 Vim edition
