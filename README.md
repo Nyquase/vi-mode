@@ -107,12 +107,15 @@ Delete and Insert
 1. Clone this repository into `ZSH_CUSTOM/plugins` (by default `~/.oh-my-zsh/custom/plugins`)
 
   ```sh
+  # If you want better visual mode
+  git clone https://github.com/nyquase/zsh-vimode-visual ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vimode-visual
+
   git clone https://github.com/nyquase/vi-mode ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/vi-mode
   ```
 
 2. Add the plugin to the list of plugins for Oh My Zsh to load (inside `.zshrc`):
   ```sh
-  plugins=(vi-mode)
+  plugins=(vi-mode zsh-vimode-visual)
   ```
   This will override the default Oh My Zsh vi-mode if you were using it
 
