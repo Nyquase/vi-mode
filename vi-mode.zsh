@@ -29,7 +29,7 @@ key=(
 [[ -n "${key[Delete]}"  ]]  && bindkey -M vicmd "${key[Delete]}" delete-char
 
 # Fix backspace
-[[ -n "${key[Backspace]}"  ]]  && bindkey "${key[Backspace]}" delete-char-backward
+[[ -n "${key[BackSpace]}"  ]]  && bindkey "${key[BackSpace]}" backward-delete-char
 
 # Beginning search with arrow keys
 [[ -n "${key[Up]}"      ]]  && bindkey "${key[Up]}" up-line-or-beginning-search
