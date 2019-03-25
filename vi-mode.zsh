@@ -20,20 +20,18 @@ key=(
   PageDown   "${terminfo[knp]}"
 )
 
-# Fixing Home/End/Del keys
-[[ -n "${key[Home]}"    ]]  && bindkey "${key[Home]}" beginning-of-line
-[[ -n "${key[Home]}"    ]]  && bindkey -M vicmd "${key[Home]}" beginning-of-line
-[[ -n "${key[End]}"     ]]  && bindkey "${key[End]}" end-of-line
-[[ -n "${key[End]}"     ]]  && bindkey -M vicmd "${key[End]}" end-of-line
-[[ -n "${key[Delete]}"  ]]  && bindkey "${key[Delete]}" delete-char
-[[ -n "${key[Delete]}"  ]]  && bindkey -M vicmd "${key[Delete]}" delete-char
-
-# Fix backspace
-[[ -n "${key[BackSpace]}"  ]]  && bindkey "${key[BackSpace]}" backward-delete-char
-
-# Beginning search with arrow keys
-[[ -n "${key[Up]}"      ]]  && bindkey "${key[Up]}" up-line-or-beginning-search
-[[ -n "${key[Down]}"    ]]  && bindkey "${key[Down]}" down-line-or-beginning-search
+# Setup key accordingly
+[[ -n "${key[BackSpace]}" ]] && bindkey "${key[BackSpace]}" backward-delete-char
+[[ -n "${key[Home]}"      ]] && bindkey "${key[Home]}" beginning-of-line
+[[ -n "${key[End]}"       ]] && bindkey "${key[End]}" end-of-line
+[[ -n "${key[Insert]}"    ]] && bindkey "${key[Insert]}" overwrite-mode
+[[ -n "${key[Delete]}"    ]] && bindkey "${key[Delete]}" delete-char
+[[ -n "${key[Up]}"        ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}"      ]] && bindkey "${key[Down]}" down-line-or-beginning-search
+[[ -n "${key[PageUp]}"    ]] && bindkey "${key[PageUp]}" beginning-of-buffer-or-history
+[[ -n "${key[PageDown]}"  ]] && bindkey "${key[PageDown]}" end-of-buffer-or-history
+[[ -n "${key[Home]}"      ]] && bindkey -M vicmd "${key[Home]}" beginning-of-line
+[[ -n "${key[End]}"       ]] && bindkey -M vicmd "${key[End]}" end-of-line
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 
@@ -41,10 +39,10 @@ bindkey -M vicmd "j" down-line-or-beginning-search
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd '/' history-incremental-search-forward
 
-# Remap ctrl-U  to default behavior
+# Remap ctrl-U to default behavior
 bindkey "^U" kill-whole-line
 
-# allow Ctrl-v to edit the command line (standard behaviour)
+# Allow Ctrl-v to edit the command line
 autoload -Uz edit-command-line
 bindkey -M vicmd '^V' edit-command-line
 
@@ -120,10 +118,9 @@ function vi_mode_prompt_info() {
     VISUAL_MODE_INDICATOR="%{$FX[bold]$FG[214]%}VISUAL%{$FX[reset]%}"
   fi
   case $KEYMAP in
-    vivis) echo $VISUAL_MODE_INDICATOR;;
-    vicmd) echo $NORMAL_MODE_INDICATOR;;
-    main|viins) echo $INSERT_MODE_INDICATOR;;
-    #*) echo $INSERT_MODE;;
+    vivis) echo -n "$VISUAL_MODE_INDICATOR";;
+    vicmd) echo -n "$NORMAL_MODE_INDICATOR";;
+    main|viins) echo -n "$INSERT_MODE_INDICATOR";;
   esac
 }
 
