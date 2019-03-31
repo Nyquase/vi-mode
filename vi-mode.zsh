@@ -118,7 +118,7 @@ function vi_mode_prompt_info() {
     VISUAL_MODE_INDICATOR="%{$FX[bold]$FG[214]%}VISUAL%{$FX[reset]%}"
   fi
   case $KEYMAP in
-    vivis) echo -n "$VISUAL_MODE_INDICATOR";;
+    vivis|vivli) echo -n "$VISUAL_MODE_INDICATOR";;
     vicmd) echo -n "$NORMAL_MODE_INDICATOR";;
     main|viins) echo -n "$INSERT_MODE_INDICATOR";;
   esac
