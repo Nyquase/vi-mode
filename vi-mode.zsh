@@ -7,7 +7,6 @@ bindkey -v
 
 typeset -A key
 key=(
-  BackSpace  "${terminfo[kbs]}"
   Home       "${terminfo[khome]}"
   End        "${terminfo[kend]}"
   Insert     "${terminfo[kich1]}"
@@ -20,8 +19,10 @@ key=(
   PageDown   "${terminfo[knp]}"
 )
 
+# Fix backspace when leaving normal mode
+bindkey "^?" backward-delete-char
+
 # Setup key accordingly
-[[ -n "${key[BackSpace]}" ]] && bindkey "${key[BackSpace]}" backward-delete-char
 [[ -n "${key[Home]}"      ]] && bindkey "${key[Home]}" beginning-of-line
 [[ -n "${key[End]}"       ]] && bindkey "${key[End]}" end-of-line
 [[ -n "${key[Insert]}"    ]] && bindkey "${key[Insert]}" overwrite-mode
