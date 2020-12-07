@@ -108,7 +108,7 @@ Delete and Insert
 
   ```sh
   # If you want better visual mode
-  git clone https://github.com/nyquase/zsh-vimode-visual ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vimode-visual
+  git clone https://github.com/b4b4r07/zsh-vimode-visual ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-vimode-visual
 
   git clone https://github.com/nyquase/vi-mode ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/vi-mode
   ```
