@@ -2,6 +2,10 @@ vi-mode
 =======
 This plugin increase `vi-like` zsh functionality.
 
+<p align="center">
+  <img src="screenshot.png" alt="preview">
+</p>
+
 Use `ESC` or `CTRL-[` to enter `Normal mode`.
 
 
