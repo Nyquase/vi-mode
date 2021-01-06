@@ -95,6 +95,24 @@ Delete and Insert
 
 # Installation
 
+### Zplug
+
+1. Add this to your [zplug](https://github.com/zplug/zplug) section
+
+```sh
+zplug "nyquase/vi-mode"
+zplug "b4b4r07/zsh-vimode-visual", defer:3
+```
+
+My recommended zplug plugins
+```sh
+zplug "nyquase/vi-mode"
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zdharma/fast-syntax-highlighting", defer:2
+zplug "b4b4r07/zsh-vimode-visual", defer:3
+```
+
 ### Manual (Git Clone)
 
 1. Clone this repository somewhere on your machine.
