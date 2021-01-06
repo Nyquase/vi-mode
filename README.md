@@ -2,6 +2,10 @@ vi-mode
 =======
 This plugin increase `vi-like` zsh functionality.
 
+- Line cursor in insert mode
+- Block cursor in normal and visual mode
+- Mode indicator
+
 <p align="center">
   <img src="screenshot.png" alt="preview">
 </p>
