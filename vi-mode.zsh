@@ -64,14 +64,17 @@ bindkey '^e' end-of-line
 
 export KEYTIMEOUT=1
 
+ANSI_BLOCK_CURSOR="\e[2 q"
+ANSI_LINE_CURSOR="\e[5 q"
+
 function select_cursor() {
   case $KEYMAP in
     # Block cursor in normal and visual mode
-    vicmd) echo -ne "\e[2 q";;
+    vicmd) echo -ne $ANSI_BLOCK_CURSOR;;
     # Line cursor in insert mode
-    main|viins) echo -ne "\e[5 q";;
+    main|viins) echo -ne $ANSI_LINE_CURSOR;;
     # Else Block cursor
-    *) echo -ne "\e[2 q";;
+    *) echo -ne $ANSI_BLOCK_CURSOR;;
   esac
 }
 
@@ -84,7 +87,9 @@ function zle-keymap-select() {
 zle -N zle-keymap-select
 
 function zle-line-init() {
-  echoti smkx
+  if (( ${+terminfo[smkx]} )); then
+    echoti smkx
+  fi
   zle reset-prompt
   select_cursor
 }
@@ -93,8 +98,10 @@ zle -N zle-line-init
 # Reset to block cursor when executing a command,
 # else it would be line cursor
 function zle-line-finish() {
-  echoti rmkx
-  echo -ne "\e[2 q"
+  if (( ${+terminfo[rmkx]} )); then
+    echoti rmkx
+  fi
+  echo -ne $ANSI_BLOCK_CURSOR
 }
 zle -N zle-line-finish
 
@@ -141,6 +148,6 @@ function spectrum_xls() {
   fi
 
   for code in {000..255}; do
-		print -P -- "$code: %{$FX[bold]$FG[$code]%}$SPECTRUM_TEXT%{$FX[reset]%}"
-	done
+    print -P -- "$code: %{$FX[bold]$FG[$code]%}$SPECTRUM_TEXT%{$FX[reset]%}"
+  done
 }
