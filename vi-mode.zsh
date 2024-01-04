@@ -84,7 +84,9 @@ function zle-keymap-select() {
 zle -N zle-keymap-select
 
 function zle-line-init() {
-  echoti smkx
+  if (( ${+terminfo[smkx]} )); then
+    echoti smkx
+  fi
   zle reset-prompt
   select_cursor
 }
@@ -93,7 +95,9 @@ zle -N zle-line-init
 # Reset to block cursor when executing a command,
 # else it would be line cursor
 function zle-line-finish() {
-  echoti rmkx
+  if (( ${+terminfo[rmkx]} )); then
+    echoti rmkx
+  fi
   echo -ne "\e[2 q"
 }
 zle -N zle-line-finish
