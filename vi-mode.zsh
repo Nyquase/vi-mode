@@ -148,6 +148,6 @@ function spectrum_xls() {
   fi
 
   for code in {000..255}; do
-		print -P -- "$code: %{$FX[bold]$FG[$code]%}$SPECTRUM_TEXT%{$FX[reset]%}"
-	done
+    print -P -- "$code: %{$FX[bold]$FG[$code]%}$SPECTRUM_TEXT%{$FX[reset]%}"
+  done
 }
