@@ -64,14 +64,17 @@ bindkey '^e' end-of-line
 
 export KEYTIMEOUT=1
 
+ANSI_BLOCK_CURSOR="\e[2 q"
+ANSI_LINE_CURSOR="\e[5 q"
+
 function select_cursor() {
   case $KEYMAP in
     # Block cursor in normal and visual mode
-    vicmd) echo -ne "\e[2 q";;
+    vicmd) echo -ne $ANSI_BLOCK_CURSOR;;
     # Line cursor in insert mode
-    main|viins) echo -ne "\e[5 q";;
+    main|viins) echo -ne $ANSI_LINE_CURSOR;;
     # Else Block cursor
-    *) echo -ne "\e[2 q";;
+    *) echo -ne $ANSI_BLOCK_CURSOR;;
   esac
 }
 
@@ -98,7 +101,7 @@ function zle-line-finish() {
   if (( ${+terminfo[rmkx]} )); then
     echoti rmkx
   fi
-  echo -ne "\e[2 q"
+  echo -ne $ANSI_BLOCK_CURSOR
 }
 zle -N zle-line-finish
 
